@@ -1,52 +1,20 @@
-# Prerequisites
-*.d
-
 # Object files
 *.o
-*.ko
-*.obj
-*.elf
 
-# Linker output
-*.ilk
-*.map
-*.exp
+# ide
+.vscode
+.intelliJ
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
+# Compiled files
 *.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
 *.so
-*.so.*
-*.dylib
-
-# Executables
 *.exe
+*.dll
 *.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+/bin
+/obj
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# miscelanous
+*.log
+*.swp
+*.db

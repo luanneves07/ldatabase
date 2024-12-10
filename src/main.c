@@ -11,20 +11,29 @@ void usage(char * const argv[]) {
     printf("Reads the header of a binary file and prints the number of employees stored.\n");
     printf("Usage: %s  -f <filename> [-n] -a <name,address,hours> [-l]\n", argv[0]);
     printf("Options:\n");
-    printf("\t -f <filename> (required)  The binary file to read.\n");
-    printf("\t -a <name,address,hours>   Add an employee to the database.\n");
-    printf("\t -n                        Create a new file if it does not exist.\n");
-    printf("\t -l                        List all employees in the database.\n");
+    printf("\t -f | --filename <filename>      The name of the file to read.\n");
+    printf("\t -a | --add <name,address,hours> Add an employee to the database.\n");
+    printf("\t -n | --new-database             Create a new database file.\n");
+    printf("\t -l | --list                     List all employees in the database.\n");
 }
 
 int main(int argc, char * const argv[]) {
     int opt;
+    int opt_index = 0;
     char *filepath = NULL;
     char *employeeToAdd = NULL;
     bool listEmployees = false;
     bool createNewFile = false;
+
+    static struct option long_options[] = {
+        {"filename", required_argument, 0, 'f'},
+        {"add", required_argument, 0, 'a'},
+        {"list", no_argument, 0, 'l'},
+        {"new-database", no_argument, 0, 'n'},
+        {0, 0, 0, 0}
+    };
     
-    while ((opt = getopt(argc, argv, "nf:a:l")) != -1) {
+    while ((opt = getopt_long(argc, argv, "nf:a:l", long_options, &opt_index)) != -1) {
         switch (opt) {
             case 'n':
                 createNewFile = true;
